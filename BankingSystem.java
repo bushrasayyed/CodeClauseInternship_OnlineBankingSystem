@@ -62,7 +62,7 @@ public class BankingSystem extends JFrame {
     }
 
     private void initializeDatabase() {
-        // Seting up database connection 
+        // Setting up database connection 
         String jdbcURL = "jdbc:mysql://localhost:3306/Bank";
         String username = "root";
         String password = "Bushra@2001";
