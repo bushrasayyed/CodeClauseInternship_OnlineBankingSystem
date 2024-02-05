@@ -62,7 +62,7 @@ public class BankingSystem extends JFrame {
     }
 
     private void initializeDatabase() {
-        // Set up database connection
+        // Seting up database connection 
         String jdbcURL = "jdbc:mysql://localhost:3306/Bank";
         String username = "root";
         String password = "Bushra@2001";
@@ -72,10 +72,10 @@ public class BankingSystem extends JFrame {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
             Statement statement = connection.createStatement();
 
-            // Create accounts table if not exists
+            // Creating accounts table if not exists
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS accounts (account_number INT PRIMARY KEY, balance DOUBLE)");
 
-            // Create transactions table if not exists
+            // Creating transaction table if not exists
             statement.executeUpdate("CREATE TABLE IF NOT EXISTS transaction (transaction_id INT AUTO_INCREMENT PRIMARY KEY, " +
                     "account_number INT, transaction_type VARCHAR(10), amount DOUBLE, " +
                     "transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY (account_number) REFERENCES accounts(account_number))");
@@ -132,7 +132,7 @@ public class BankingSystem extends JFrame {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/Bank", "root", "Bushra@2001");
             Statement statement = connection.createStatement();
 
-            // Update balance in the accounts table
+            // Updation of balance in our accounts table
             if (transactionType.equals("Deposit")) {
                 statement.executeUpdate("UPDATE accounts SET balance = balance + " + amount + " WHERE account_number = " + accountNumber);
             }
@@ -145,7 +145,7 @@ public class BankingSystem extends JFrame {
                 statement.executeUpdate("UPDATE accounts SET balance = balance + " + amount + " WHERE account_number = " + transferAccount);
             }
 
-            // Insert transaction record into the transactions table
+            // Inserting  transaction record into our transactions table
             statement.executeUpdate("INSERT INTO transaction (account_number, transaction_type, amount) VALUES (" + accountNumber + ", '" + transactionType + "', " + amount + ")");
 
             JOptionPane.showMessageDialog(this, transactionType + " successful!");
